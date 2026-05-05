@@ -27,5 +27,23 @@ pipeline {
                 '''
             }
         }
+
+        stage('Run Docker Container') {
+            steps {
+                sh '''
+                docker run -d -p 5001:5000 --name test-container flask-jenkins-app
+                
+                # Wait for app to start
+                sleep 5
+                
+                # Test endpoint
+                curl -f http://localhost:5001
+                
+                # Cleanup
+                docker stop test-container
+                docker rm test-container
+                '''
+            }
+        }
     }
 }
