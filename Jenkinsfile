@@ -39,11 +39,16 @@ pipeline {
                 # Test endpoint
                 curl -f http://localhost:5001
                 
-                # Cleanup
-                docker stop test-container
-                docker rm test-container
-                '''
             }
+        }
+    }
+
+    post {
+        always {
+            sh '''
+            docker stop test-container || true
+            docker rm test-container || true
+            '''
         }
     }
 }
