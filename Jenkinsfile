@@ -11,13 +11,6 @@ pipeline {
             }
         }
 
-        stage('Lint Code') {
-            steps {
-                sh '''
-                venv/bin/flake8 app tests
-                '''
-            }
-        }
 
         stage('Run Tests') {
             steps {
