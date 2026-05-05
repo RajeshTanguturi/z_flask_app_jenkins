@@ -2,12 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/RajeshTanguturi/z_flask_app_jenkins.git'
-            }
-        }
-
+        
         stage('Setup Python') {
             steps {
                 sh '''
