@@ -38,11 +38,10 @@ pipeline {
                 
                 # Test endpoint
                 curl -f http://localhost:5001
-                
+                '''
             }
         }
     }
-
     post {
         always {
             sh '''
@@ -51,4 +50,5 @@ pipeline {
             '''
         }
     }
+    
 }
